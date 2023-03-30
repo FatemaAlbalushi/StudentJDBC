@@ -1,6 +1,7 @@
 package org.example;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,13 +23,23 @@ public class Main {
             //Read
             System.out.println("Display all Student :");
             rs = statement.executeQuery("select * from student ;");
+            ArrayList<Student> students = new ArrayList();
+
             while (rs.next()){
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String email = rs.getString("email");
                 int age = rs.getInt("age");
-                System.out.println("ID: "+ id + ", Name: "+ name + ", Email: " + email + ", age: " + age);
+
+                Student student = new Student(id,name,email,age);
+                students.add(student);
             }
+
+            for (Student currstudent:students){
+                //System.out.println(currstudent);
+                System.out.println("ID: "+currstudent.getId()+ ", Name: "+ currstudent.getName() + ", Email: " + currstudent.getEmail() + ", age: " + currstudent.getAge());
+            }
+
 
         }catch (SQLException e){
             throw new RuntimeException(e);
