@@ -28,7 +28,6 @@ public class Main {
                 String email = rs.getString("email");
                 int age = rs.getInt("age");
                 System.out.println("ID: "+ id + ", Name: "+ name + ", Email: " + email + ", age: " + age);
-
             }
 
         }catch (SQLException e){
